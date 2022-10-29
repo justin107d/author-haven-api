@@ -13,8 +13,8 @@ APPS_DIR = ROOT_DIR / 'core_apps'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-environ.Env.read_env(os.path.join(BASE_DIR / 'settings', '.env')) # this line is trash and did not work
+# connects django to environment variables
+environ.Env.read_env(os.path.join(BASE_DIR / 'settings', '.env'))
 
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
