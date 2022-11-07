@@ -3,7 +3,7 @@ ARG PYTHON_VERSION=3.9-slim-bullseye
 FROM python:${PYTHON_VERSION} as python
 
 # BUILD STAGE
-FROM python as pthyon-build-stage
+FROM python as python-build-stage
 ARG BUILD_ENVIORMENT=local
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
@@ -20,6 +20,7 @@ RUN pip wheel --wheel-dir /usr/src/app/wheels \
 FROM python as python-run-stage
 
 ARG BUILD_ENVIORMENT=local
+# ARG APP_HOME=/usr/src/app
 ARG APP_HOME=/app
 
 ENV PYTHONDONTWRITEBYTECODE 1
