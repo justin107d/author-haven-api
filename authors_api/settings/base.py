@@ -37,6 +37,7 @@ THIRD_PARTY_APPS = [
     'phonenumber_field',
     'drf_yasg',
     'corsheaders',
+    'djcelery_email',
 ]
 
 LOCAL_APPS = [
@@ -128,7 +129,7 @@ SITE_ID = 1
 
 ADMIN_URL = 'randomStringThatIsHardToGuess/'
 
-ADMINS = [('''Justin Django''', 'justin107d@gmail.com')]
+ADMINS = [('''Justin Django''', 'info@authors-haven.com')]
 
 MANAGERS = ADMINS
 
@@ -149,6 +150,13 @@ CORS_URLS_REGEX=r'^/api/.*$'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+CELERY_BROKER_URL = env("CELERY_BROKER")
+CELERY_RESULT_BACKEND = env("CELERY_BACKEND")
+CELERY_TIMEZONE = "Africa/Kigali"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
 
 LOGGING = {
     'version': 1,

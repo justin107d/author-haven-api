@@ -1,6 +1,7 @@
 version: "3.9"
 
 services:
+  # django application
   api:
     build:
       context: .
@@ -12,17 +13,20 @@ services:
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     # ports:
+      # - "8000:8000"
     expose:
-      - "8000:8000"
+      - "8000"
     env_file:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
     depends_on:
       - postgres
       - mailhog
+      - redis
     networks:
       - authors-api-live
 
+  # Database
   postgres:
     build:
       context: .
@@ -35,7 +39,8 @@ services:
       - ./.envs/.local/.postgres
     networks:
       - authors-api-live
-    
+  
+  # Email Service
   mailhog:
     image: mailhog/mailhog:v1.0.0
     container_name: mailhog
@@ -44,6 +49,52 @@ services:
     networks:
       - authors-api-live
   
+  # Message Broker
+  redis:
+    image: redis:6-alpine
+    container_name: redis
+    networks:
+      - authors-api-live
+  
+  # Async Tasks
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./docker/local/django/Dockerfile
+    command: /start-celeryworker
+    container_name: celery_worker
+    volumes:
+      - .:/app
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    depends_on:
+      - redis        
+      - postgres
+      - mailhog
+    networks:
+      - authors-api-live
+  
+  # Monitors Celery Tasks
+  flower:
+    build:
+      context: .
+      dockerfile: ./docker/local/django/Dockerfile
+    command: /start-flower
+    container_name: flower
+    volumes:
+      - .:/app
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - authors-api-live
+
   nginx:
     restart: always
     depends_on:
