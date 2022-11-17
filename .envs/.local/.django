@@ -1,3 +1,4 @@
+
 CELERY_BROKER=redis://redis:6379/0
 CELERY_BACKEND=redis://redis:6379/0
 
@@ -9,4 +10,8 @@ CELERY_FLOWER_PASSWORD=admin123456
 
 SIGNING_KEY=XSm8lLNS3Jl9zrOLGBN27QjnDPmaX05PRJtnEE9B7KUToG43AzE
 
+DATABASE_URL=postgres://postgres:skippy@postgres:5432/authors-live
+
 DJANGO_SECRET_KEY=bnw$7^@btnzaz+%=35va-=bv3gosvkroq2tpy@ct!xe_q_3qfw
+
+DJANGO_DEBUG=True

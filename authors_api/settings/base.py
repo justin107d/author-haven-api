@@ -1,5 +1,5 @@
 
-
+from datetime import timedelta
 from pathlib import Path
 import environ
 import os
@@ -14,8 +14,8 @@ APPS_DIR = ROOT_DIR / 'core_apps'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # connects django to environment variables
-environ.Env.read_env(os.path.join(BASE_DIR / 'settings', '.env'))
-
+# environ.Env.read_env(os.path.join(BASE_DIR / 'settings', '.env'))
+environ.Env.read_env(os.path.join(ROOT_DIR / '.envs/.local/', '.django'))
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
@@ -38,6 +38,8 @@ THIRD_PARTY_APPS = [
     'drf_yasg',
     'corsheaders',
     'djcelery_email',
+    'djoser',
+    'rest_framework_simplejwt',
 ]
 
 LOCAL_APPS = [
@@ -127,11 +129,11 @@ USE_TZ = True
 
 SITE_ID = 1
 
-ADMIN_URL = 'randomStringThatIsHardToGuess/'
+ADMIN_URL = 'supersecret/'
 
-ADMINS = [('''Justin Django''', 'info@authors-haven.com')]
+# ADMINS = [('''Justin Django''', 'info@authors-haven.com')]
 
-MANAGERS = ADMINS
+# MANAGERS = ADMINS
 
 
 STATIC_URL = '/staticfiles/'
@@ -166,6 +168,8 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
+
+
 
 
 LOGGING = {
