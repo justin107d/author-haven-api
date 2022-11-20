@@ -34,4 +34,4 @@ def create_article_rating_view(request, article_id):
 
         return Response(
             {"success": "Rating has been added"}, status=status.HTTP_201_CREATED
-        ) 
+        )

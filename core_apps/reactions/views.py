@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core_apps.articles.models import Article
- 
+
 from .models import Reaction
 from .serializers import ReactionSerializer
 

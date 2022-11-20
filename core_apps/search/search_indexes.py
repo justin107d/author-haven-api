@@ -5,8 +5,10 @@ from core_apps.articles.models import Article
 
 
 class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
-    
-    text = indexes.CharField(document=True) # the primary search field and conventionally named text
+
+    text = indexes.CharField(
+        document=True
+    )  # the primary search field and conventionally named text
     author = indexes.CharField(model_attr="author")
     title = indexes.CharField(model_attr="title")
     body = indexes.CharField(model_attr="body")
