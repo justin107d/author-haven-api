@@ -10,8 +10,10 @@ watchdog==2.1.6
 
 pytest-django==4.5.2
 
+# makes it easy to combine the factory approach to the test setup
 pytest-factoryboy==2.1.0
 
+# generates fake data
 Faker==11.3.0
 
 pytest-cov==3.0.0
