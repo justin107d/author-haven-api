@@ -1,29 +1,29 @@
-django==3.2.11
-django-environ==0.8.1
-djangorestframework==3.12.4
-django-cors-headers==3.10.1
-django-filter==21.1
-django-autoslug==1.9.8
-django-countries==7.2.1
-django-phonenumber-field==5.2.0
-phonenumbers==8.12.33
-drf-yasg==1.20.0
+django==3.2.11 # our webframework
+django-environ==0.8.1 # adapts environment variables to django
+djangorestframework==3.12.4 # adds rest framework tools to django
+django-cors-headers==3.10.1 # adapts cors headers to django
+django-filter==21.1 # django filter package
+django-autoslug==1.9.8 # offers automatic slug model field
+django-countries==7.2.1 # django package for country options in forms
+django-phonenumber-field==5.2.0 # allows django phone number field
+phonenumbers==8.12.33 # phone numbers
+drf-yasg==1.20.0 # open API tools for DRF
 
-Pillow==9.0.0
+Pillow==9.0.0 # images
 
-argon2-cffi==21.3.0
+argon2-cffi==21.3.0 # password hashing
 
-pytz==2021.3
+pytz==2021.3 # timezone
 
-redis==4.1.0
-celery==5.2.3
-flower==1.0.0
-django-celery-email==3.0.0
+redis==4.1.0 # caching library
+celery==5.2.3 # async task worker
+flower==1.0.0 # celery task manager
+django-celery-email==3.0.0 # sends emails with celery
 
-djoser==2.1.0
-djangorestframework-simplejwt==4.8.0
-PyJWT==2.1.0
+djoser==2.1.0 # DRF auth
+djangorestframework-simplejwt==4.8.0 # DRF JWT
+PyJWT==2.1.0 # JWTs
 
-django-haystack==3.1.1
-Whoosh==2.7.4
-drf-haystack==1.8.11
+django-haystack==3.1.1 # haystack search tools for django
+Whoosh==2.7.4 # search
+drf-haystack==1.8.11 # DRF haystack tools

@@ -1,19 +1,14 @@
 -r base.txt
 
-psycopg2==2.9.3
-flake8==4.0.1
-black==21.12.0
-isort==5.9.3
-argh==0.26.2
-PyYAML==6.0
-watchdog==2.1.6
+psycopg2==2.9.3 # connects to postgres db
+flake8==4.0.1 # linter and enforces basic rules
+black==21.12.0 # formats code
+isort==5.9.3 # sorts dependencies
+argh==0.26.2 # offers abstraction for argparse, not used
+PyYAML==6.0 # converts yaml into a python dictionary
+watchdog==2.1.6 # watches for changes, only used in celery worker
 
-pytest-django==4.5.2
-
-# makes it easy to combine the factory approach to the test setup
-pytest-factoryboy==2.1.0
-
-# generates fake data
-Faker==11.3.0
-
-pytest-cov==3.0.0
+pytest-django==4.5.2 # testing library
+pytest-factoryboy==2.1.0 # makes it easy to combine the factory approach to the test setup
+Faker==11.3.0 # generates fake data
+pytest-cov==3.0.0 # tells us test coverage
